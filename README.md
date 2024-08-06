@@ -69,7 +69,9 @@ For this set of experiments, move to ```./veracity-cards/``` folder. <br>
 ### Budget-Constrained Error Correction
 
 For this set of experiments, move to ```./budget-correction/``` folder. <br>
-
+- run ```python budgetCorrectionCards.py``` to compute the number of entity cards of size 5/10 generated when filtering and budget-constrained error correction are applied.
+- run ```python budgetCorrectionRanking.py --method dynes_utility``` to evaluate DynES nDCG@5/10 performance when filtering and budget-constrained error correction are applied.
+- run ```python budgetCorrectionRanking.py --method relin``` to evaluate RELIN nDCG@5/10 performance when filtering and budget-constrained error correction are applied.
 
 ## Acknowledgments
 The work is partially supported by the HEREDITARY project, as part of the EU Horizon Europe research and innovation programme under Grant Agreement No GA 101137074.
