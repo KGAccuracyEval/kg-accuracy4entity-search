@@ -56,7 +56,20 @@ For this set of experiments, move to ```./veracity-ranking/``` folder. <br>
 - run ```python reRank.py --method dynes_utility``` to perform the veracity-enhanced re-ranking strategy on DynES, which is stored in [./data/runs/vRankDynes.run](https://github.com/KGAccuracyEval/kg-accuracy4entity-search/blob/main/data/runs/vRankDynes.run).
 - run ```python reRank.py --method relin``` to perform the veracity-enhanced re-ranking strategy on RELIN, which is stored in [./data/runs/vRankRELIN.run](https://github.com/KGAccuracyEval/kg-accuracy4entity-search/blob/main/data/runs/vRankRELIN.run).
 - run ```python evaluateRuns.py``` to evaluate performance of baseline and <i>v</i>Rank methods for nDCG@5 and nDCG@10.
-- compute Kendall's &tau; Union (KTU) correlations between baseline and <i>v</i>Rank methods at cutoffs 5 and 10 using ```computeCardsCorrelation.py```, the cutoff value can be set via ```--size``` and the considered method via ```--method```. Allowed sizes are ```5``` or ```10```, while allowed methods are ```dynes_utility``` or ```relin```. Besides reporting KTU correlations, the script also stores entity cards at desired cutoffs for the considered methods when KTU < 0.8 -- e.g., the entity cards of size 5 for original and <i>v</i>Rank DynES methods are stored in [./data/cards/size=5/](https://github.com/KGAccuracyEval/kg-accuracy4entity-search/tree/main/data/cards/size%3D5).
+- compute Kendall's &tau; Union (KTU) correlations between baseline and <i>v</i>Rank methods at cutoffs 5 and 10 using ```computeCardsCorrelation.py```, the cutoff value can be set via ```--size``` and the considered method via ```--method```. Allowed sizes are ```5``` or ```10```, while allowed methods are ```dynes_utility``` or ```relin```.
+- besides reporting KTU correlations, the script also stores entity cards at desired cutoffs for the considered methods when KTU < 0.8 -- e.g., the entity cards of size 5 for original and <i>v</i>Rank DynES methods are stored in [./data/cards/size=5/](https://github.com/KGAccuracyEval/kg-accuracy4entity-search/tree/main/data/cards/size%3D5).
+
+### Entity Cards
+
+For this set of experiments, move to ```./veracity-cards/``` folder. <br>
+- relying on the original and <i>v</i>Rank DynES entity cards of size 5 stored in [./data/cards/size=5/](https://github.com/KGAccuracyEval/kg-accuracy4entity-search/tree/main/data/cards/size%3D5), interact with ```evaluateEntityCards.ipynb``` to manually annotate cards for preference.
+- once the annotation process ends, preferences are stored in [./data/annotations/cards/](https://github.com/KGAccuracyEval/kg-accuracy4entity-search/tree/main/data/annotations/cards).
+- run ```python evaluateCardPreferences.py``` to evaluate card preferences, obtained by aggregating (five) user preferences via majority voting.
+
+### Budget-Constrained Error Correction
+
+For this set of experiments, move to ```./budget-correction/``` folder. <br>
+
 
 ## Acknowledgments
 The work is partially supported by the HEREDITARY project, as part of the EU Horizon Europe research and innovation programme under Grant Agreement No GA 101137074.
