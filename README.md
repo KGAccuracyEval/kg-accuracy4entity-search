@@ -27,3 +27,45 @@ We consider the collection proposed by [Hasibi et al.](http://hasibi.com/files/s
 - [fact_ranking_coll.tsv](https://github.com/iai-group/DynamicEntitySummarization-DynES/blob/master/data/fact_ranking_coll.tsv)
 - [queries.txt](https://github.com/iai-group/DynamicEntitySummarization-DynES/blob/master/data/queries.txt)
 - [qrels-utility.txt](https://github.com/iai-group/DynamicEntitySummarization-DynES/blob/master/data/qrels-utility.txt)
+
+Together with the corpus, we also require [dynes_utility.run](https://github.com/iai-group/DynamicEntitySummarization-DynES/blob/master/runs/dynes_utility.run) and [relin.run](https://github.com/iai-group/DynamicEntitySummarization-DynES/blob/master/runs/relin.run) runs, which must be downloaded and moved to ```./data/runs/```.
+
+## Experiments
+
+### Veracity Estimation
+
+For this set of experiments, move to ```./veracity-estimation/``` folder. <br>
+The veracity estimation process is divided in the following steps:
+1) <b>Utility Model:</b>
+   - compute facts popularity on the Web using ```computeSearchCounts.py```, the outcomes are stored in [./data/utility/searchCounts.txt](https://github.com/KGAccuracyEval/kg-accuracy4entity-search/blob/main/data/utility/searchCounts.txt).
+   - compute facts utility using ```computeUtility.py```, the outcomes are stored in [./data/utility/factUtility.tsv](https://github.com/KGAccuracyEval/kg-accuracy4entity-search/blob/main/data/utility/factUtility.tsv).
+
+2) <b>Graph Partitioning:</b>
+   - partition the KG based on facts utility via ```stratifyFacts.py```, the resulting strata are stored in [./data/utility/stratifiedFacts.csv](https://github.com/KGAccuracyEval/kg-accuracy4entity-search/blob/main/data/utility/stratifiedFacts.csv).
+  
+3) <b>Partition Veracity Estimation:</b>
+   - relying on ```samplingTechniques.py```, interact with ```estimateStrataAccuracy.ipynb``` to manually annotate facts correctness and estimate veracity.
+   - once the estimation process ends, annotations are stored in [./data/annotations/facts/](https://github.com/KGAccuracyEval/kg-accuracy4entity-search/tree/main/data/annotations/facts) and veracity estimates in [./data/stats/facts/](https://github.com/KGAccuracyEval/kg-accuracy4entity-search/tree/main/data/stats/facts).
+  
+4) <b>Entity Veracity Estimation:</b>
+   - compute entity-level veracity via ```computeEntityVeracity.py```, the veracity estimates are stored in [./data/stats/entities/entityVeracity.tsv](https://github.com/KGAccuracyEval/kg-accuracy4entity-search/blob/main/data/stats/entities/entityVeracity.tsv).
+
+## Acknowledgments
+The work is partially supported by the HEREDITARY project, as part of the EU Horizon Europe research and innovation programme under Grant Agreement No GA 101137074.
+
+## Reference
+If you use or extend our work, please cite the following:
+
+```
+@inproceedings{marchesin_etal-cikm2024,
+  author = {S. Marchesin and G. Silvello and O. Alonso},
+  title = {Veracity Estimation for Entity-Oriented Search with Knowledge Graphs},
+  booktitle = {Proceedings of the 33rd ACM International Conference on Information and Knowledge Management (CIKM '24), October 21--25, 2024, Boise, ID, USA},
+  publisher = {{ACM}},
+  year = {2024},
+  doi = {10.1145/3627673.3679561}
+}
+```
+
+
+
