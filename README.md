@@ -50,6 +50,14 @@ The veracity estimation process is divided in the following steps:
 4) <b>Entity Veracity Estimation:</b>
    - compute entity-level veracity via ```computeEntityVeracity.py```, the veracity estimates are stored in [./data/stats/entities/entityVeracity.tsv](https://github.com/KGAccuracyEval/kg-accuracy4entity-search/blob/main/data/stats/entities/entityVeracity.tsv).
 
+### Fact Ranking
+
+For this set of experiments, move to ```./veracity-ranking/``` folder. <br>
+- run ```python reRank.py --method dynes_utility``` to perform the veracity-enhanced re-ranking strategy on DynES, which is stored in [./data/runs/vRankDynes.run](https://github.com/KGAccuracyEval/kg-accuracy4entity-search/blob/main/data/runs/vRankDynes.run).
+- run ```python reRank.py --method relin``` to perform the veracity-enhanced re-ranking strategy on RELIN, which is stored in [./data/runs/vRankRELIN.run](https://github.com/KGAccuracyEval/kg-accuracy4entity-search/blob/main/data/runs/vRankRELIN.run).
+- run ```python evaluateRuns.py``` to evaluate performance of baseline and <i>v</i>Rank methods for nDCG@5 and nDCG@10.
+- compute Kendall's &tau; Union (KTU) correlations between baseline and <i>v</i>Rank methods at cutoffs 5 and 10 using ```computeCardsCorrelation.py```, the cutoff value can be set via ```--size``` and the considered method via ```--method```. Allowed sizes are ```5``` or ```10```, while allowed methods are ```dynes_utility``` or ```relin```. Besides reporting KTU correlations, the script also stores entity cards at desired cutoffs for the considered methods when KTU < 0.8 -- e.g., the entity cards of size 5 for original and <i>v</i>Rank DynES methods are stored in [./data/cards/size=5/](https://github.com/KGAccuracyEval/kg-accuracy4entity-search/tree/main/data/cards/size%3D5).
+
 ## Acknowledgments
 The work is partially supported by the HEREDITARY project, as part of the EU Horizon Europe research and innovation programme under Grant Agreement No GA 101137074.
 
