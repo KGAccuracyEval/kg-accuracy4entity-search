@@ -14,7 +14,7 @@
 | License | MIT (see LICENSE file) |
 | Repository and DOI | https://github.com/KGAccuracyEval/kg-accuracy4entity-search (no Zenodo DOI) |
 | Release date | 6 August 2024 |
-| Related task or deliverable | 4.1 |
+| Related task or deliverable | T4.1 |
 | How to cite | S. Marchesin, G. Silvello and O. Alonso. Veracity Estimation for Entity-Oriented Search with Knowledge Graphs. CIKM 2024: 1649-1659. doi:10.1145/3627673.3679561 |
 
 ## 2. Intended use
